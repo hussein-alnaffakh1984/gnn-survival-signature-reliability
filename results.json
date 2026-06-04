@@ -1,0 +1,473 @@
+{
+  "small_net_6": {
+    "components": 6,
+    "m1": 3,
+    "m2": 3,
+    "states": 64,
+    "working": 27,
+    "lambda1": 0.8,
+    "lambda2": 1.5,
+    "adaptive_converged_states": 36,
+    "adaptive_pct": "56%",
+    "final_accuracy": "100%",
+    "ss_error": 0.0,
+    "reliability_rel_error": 0.0,
+    "importance_t": 0.5,
+    "R_sys_at_0.5": 0.5313,
+    "importance": {
+      "1": {
+        "type": 1,
+        "BI": 0.1965,
+        "CI": 0.2479,
+        "FVI": 0.1382
+      },
+      "2": {
+        "type": 1,
+        "BI": 0.1965,
+        "CI": 0.2479,
+        "FVI": 0.1382
+      },
+      "3": {
+        "type": 2,
+        "BI": 0.3885,
+        "CI": 0.3454,
+        "FVI": 0.4373
+      },
+      "4": {
+        "type": 2,
+        "BI": 0.3885,
+        "CI": 0.3454,
+        "FVI": 0.4373
+      },
+      "5": {
+        "type": 1,
+        "BI": 0.3394,
+        "CI": 0.4282,
+        "FVI": 0.2387
+      },
+      "6": {
+        "type": 2,
+        "BI": 0.212,
+        "CI": 0.1885,
+        "FVI": 0.2387
+      }
+    },
+    "pre_adaptive": {
+      "test_acc": 0.9744,
+      "full_acc": 0.9844,
+      "misclassified": 1,
+      "max_rel_err": 0.0144,
+      "mean_rel_err": 0.0055
+    },
+    "subnetworks": {
+      "remove_1": {
+        "R": 0.3996,
+        "ss_err": 0.0
+      },
+      "remove_6": {
+        "R": 0.4311,
+        "ss_err": 0.0
+      },
+      "remove_2_6": {
+        "R": 0.3242,
+        "ss_err": 0.0
+      }
+    }
+  },
+  "large_net_12": {
+    "components": 12,
+    "m1": 6,
+    "m2": 6,
+    "states": 4096,
+    "working_pct": "35.8%",
+    "adaptive_converged_states": 852,
+    "adaptive_pct": "20.8%",
+    "final_accuracy": "99.93%",
+    "max_ss_error": 0.011,
+    "reliability_rel_error": "<0.3%",
+    "sigma_trajectory": [
+      0.1443,
+      0.0577,
+      0.0833,
+      0.0111
+    ],
+    "spearman": 0.993,
+    "max_BI_error": 0.0048,
+    "subnet_small_removal": {
+      "max_rel_err": "<0.6%"
+    }
+  },
+  "complex_net_13": {
+    "components": 13,
+    "m1": 7,
+    "m2": 6,
+    "states": 8192,
+    "working_pct": "30.2%",
+    "edges": 26,
+    "degree_range": "3-5"
+  },
+  "baseline_comparison_multiseed": {
+    "network": "complex 13",
+    "seeds": 5,
+    "5pct": {
+      "ANN": [
+        0.9419,
+        0.0057
+      ],
+      "GCNN": [
+        0.9687,
+        0.0077
+      ],
+      "Ours": [
+        0.9634,
+        0.0098
+      ]
+    },
+    "8pct": {
+      "ANN": [
+        0.9618,
+        0.0251
+      ],
+      "GCNN": [
+        0.9862,
+        0.004
+      ],
+      "Ours": [
+        0.9871,
+        0.0058
+      ]
+    },
+    "12pct": {
+      "ANN": [
+        0.9812,
+        0.0097
+      ],
+      "GCNN": [
+        0.9962,
+        0.0011
+      ],
+      "Ours": [
+        0.9922,
+        0.0024
+      ]
+    },
+    "ttest_ours_vs_gcnn": {
+      "t": -1.094,
+      "p": 0.2924,
+      "conclusion": "no significant difference"
+    },
+    "params": {
+      "ANN": 18690,
+      "GCNN": 35202,
+      "Ours": 51714
+    }
+  },
+  "modern_arch_comparison": {
+    "network": "complex 13",
+    "seeds": 3,
+    "data_pct": "10%",
+    "GraphSAGE": [
+      0.9919,
+      0.0027
+    ],
+    "GAT": [
+      0.9505,
+      0.0354
+    ],
+    "Proposed": [
+      0.9667,
+      0.0122
+    ]
+  },
+  "scalability_large": {
+    "net30": {
+      "components": 30,
+      "edges": 79,
+      "m1": 20,
+      "m2": 10,
+      "degree_range": "2-8",
+      "state_space": "2^30",
+      "mcs_ref_cells": 231,
+      "reliability_rel_error": 0.0154,
+      "note": "adaptive"
+    },
+    "net50": {
+      "components": 50,
+      "edges": 136,
+      "m1": 33,
+      "m2": 17,
+      "degree_range": "2-8",
+      "state_space": "2^50",
+      "mcs_ref_cells": 612,
+      "reliability_rel_error": 0.0183,
+      "note": "properly trained"
+    }
+  },
+  "runtime": {
+    "net6": {
+      "states": "2^6=64",
+      "enum": "0.01s",
+      "mcs": "0.01s",
+      "gnn": "0.90s",
+      "note": "enum fastest"
+    },
+    "net30": {
+      "states": "2^30",
+      "enum": "infeasible",
+      "mcs": "79.4s",
+      "gnn": "15.4s",
+      "speedup": "~5x"
+    },
+    "net50": {
+      "states": "2^50",
+      "enum": "infeasible",
+      "mcs": "362.0s",
+      "gnn": "31.5s",
+      "speedup": "11x"
+    }
+  },
+  "ablation": {
+    "network": "complex 13",
+    "flow_only": {
+      "ss_err": 0.0476,
+      "R_rel_err": 0.0242,
+      "train": 1000
+    },
+    "hgnn_only": {
+      "ss_err": 0.0254,
+      "R_rel_err": 0.0133,
+      "train": 1000
+    },
+    "full_no_adapt": {
+      "ss_err": 0.019,
+      "R_rel_err": 0.0074,
+      "train": 1000
+    },
+    "full_adaptive": {
+      "ss_err": 0.0413,
+      "R_rel_err": 0.0025,
+      "train": 396
+    }
+  },
+  "subnet_large_removal_30comp": {
+    "20pct": {
+      "removed": 6,
+      "ss_err": 0.2633,
+      "R_rel_err": 0.0421
+    },
+    "30pct": {
+      "removed": 9,
+      "ss_err": 0.2173,
+      "R_rel_err": 0.1053
+    },
+    "40pct": {
+      "removed": 12,
+      "ss_err": 0.1737,
+      "R_rel_err": 0.0756
+    }
+  },
+  "ieee14_real": {
+    "representation": "bus-failure (buses=components, lines=edges)",
+    "buses_total": 14,
+    "failable_buses": 12,
+    "lines": 20,
+    "m1": 6,
+    "m2": 6,
+    "state_space": "2^12=4096",
+    "reference": "exact enumeration",
+    "ref_cells": 49,
+    "enum_time_s": 0.36,
+    "adaptive_converged_states": 325,
+    "adaptive_pct": "7.9%",
+    "sigma_final": 0.0133,
+    "sigma_trajectory": [
+      0.0816,
+      0.0327,
+      0.029,
+      0.0133
+    ],
+    "max_ss_error": 0.0111,
+    "R_ref": 0.5291,
+    "R_gnn": 0.5313,
+    "reliability_rel_error": 0.0042,
+    "gnn_runtime_s": 16.9,
+    "source": "generation bus 1",
+    "terminal": "load bus 14"
+  },
+  "ten_seed_comparison": {
+    "network": "complex 13",
+    "seeds": 10,
+    "data_pct": "10%",
+    "GCNN": [
+      0.9773,
+      0.0115
+    ],
+    "Proposed": [
+      0.9734,
+      0.0075
+    ],
+    "GCNN_CI95": [
+      0.9702,
+      0.9844
+    ],
+    "Proposed_CI95": [
+      0.9687,
+      0.9781
+    ],
+    "ttest_t": -0.773,
+    "ttest_p": 0.4591,
+    "cohen_d": -0.245,
+    "conclusion": "no significant difference (small effect)"
+  },
+  "runtime_meanstd_30comp": {
+    "mcs_mean": 77.4,
+    "mcs_std": 1.0,
+    "gnn_mean": 7.1,
+    "gnn_std": 0.1,
+    "speedup": 10.9,
+    "runs": 5
+  },
+  "generalization_crosstopology": {
+    "train_A_test_B": 0.8792,
+    "train_B_test_B": 1.0,
+    "gap": 0.1208,
+    "interpretation": "partial transfer; framework is per-network by design"
+  },
+  "time_series_importance": {
+    "network": "complex 13",
+    "time_points": [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      4.0
+    ],
+    "spearman": [
+      0.9176,
+      0.9835,
+      0.967,
+      0.9231,
+      0.8956,
+      0.9231,
+      0.8462,
+      0.9231,
+      0.9341,
+      0.8736
+    ],
+    "max_bi_err": [
+      0.0194,
+      0.0149,
+      0.0206,
+      0.019,
+      0.0135,
+      0.0039,
+      0.0008,
+      0.0002,
+      0.0001,
+      0.0
+    ],
+    "mean_spearman": 0.9187,
+    "min_spearman": 0.8462
+  },
+  "break_even": {
+    "network": "30-comp",
+    "train_time_s": 3.4,
+    "infer_s": 4.48,
+    "mcs_s": 63.4,
+    "break_even_queries": 0.1,
+    "k10_gnn": 48,
+    "k10_mcs": 634,
+    "k50_gnn": 228,
+    "k50_mcs": 3171
+  },
+  "weibull_demo": {
+    "network": "6-comp",
+    "exp_R": {
+      "0.5": 0.5313,
+      "1.0": 0.1581,
+      "2.0": 0.0085
+    },
+    "weibull_R": {
+      "0.5": 0.7374,
+      "1.0": 0.1128,
+      "2.0": 0.0
+    },
+    "weibull_params": {
+      "type1": [
+        1.5,
+        1.0
+      ],
+      "type2": [
+        2.0,
+        0.8
+      ]
+    }
+  },
+  "ieee30_real": {
+    "representation": "bus-failure (buses=components, lines=edges)",
+    "buses_total": 30,
+    "failable_buses": 28,
+    "lines": 41,
+    "m1": 12,
+    "m2": 16,
+    "state_space": "2^28",
+    "reference": "high-fidelity MCS (10000 samples x3 seeds)",
+    "mcs_ref_cells": 221,
+    "mcs_max_cell_std": 0.0076,
+    "training_states": 3366,
+    "training_pct": "0.0013%",
+    "max_ss_error": 0.0222,
+    "mean_ss_error": 0.0047,
+    "reliability_rel_error_operational": 0.0153,
+    "operational_range": "R>0.05 (t up to 0.7)",
+    "R_table": {
+      "0.1": [
+        0.78948,
+        0.79163
+      ],
+      "0.2": [
+        0.54797,
+        0.55263
+      ],
+      "0.3": [
+        0.3552,
+        0.35702
+      ],
+      "0.4": [
+        0.2233,
+        0.22214
+      ],
+      "0.5": [
+        0.13869,
+        0.13657
+      ],
+      "0.7": [
+        0.05311,
+        0.05231
+      ]
+    },
+    "note": "reliability accurate <1.6%; localized SS error in rare low-weight cells does not affect R"
+  },
+  "graphsage_backbone": {
+    "benchmark6": {
+      "R_ref": 0.5313,
+      "R_sage": 0.5313,
+      "rel_err": 0.0,
+      "spearman": 1.0,
+      "ss_err": 0.0
+    },
+    "complex13": {
+      "R_ref": 0.5022,
+      "R_sage": 0.506,
+      "rel_err": 0.0075,
+      "spearman": 0.9945,
+      "ss_err": 0.0238
+    },
+    "conclusion": "GraphSAGE backbone preserves all 3 capabilities (reliability, importance, sub-network)"
+  }
+}
