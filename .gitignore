@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.ipynb_checkpoints/
+
+# Manuscript files — intentionally NOT tracked.
+# The paper text is kept out of the public repository to avoid
+# self-similarity flags in plagiarism checks (e.g. iThenticate) during
+# peer review. Only code, data, and figures are shared here.
+*.pdf
+*.docx
+*.doc
+manuscript*
+Manuscript*
+paper*
+draft*
+
+# OS
+.DS_Store
+Thumbs.db
